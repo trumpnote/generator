@@ -43,7 +43,6 @@
         html2canvas(document.querySelector('.container')).then(function(
           canvas
         ) {
-          document.body.appendChild(canvas);
           var img = canvas.toDataURL('image/png');
           downloadURI('data:' + img, 'trump-note.png');
         });
