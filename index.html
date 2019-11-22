@@ -32,19 +32,13 @@
         $('.note').focus();
       });
 
-      function downloadURI(uri, name) {
-        var link = document.createElement('a');
-        link.download = name;
-        link.href = uri;
-        link.click();
-      }
-
       $('button').click(function() {
         html2canvas(document.querySelector('.container')).then(function(
           canvas
         ) {
-          var img = canvas.toDataURL('image/png');
-          downloadURI('data:' + img, 'trumpnote.png');
+          canvas.toBlob(function(blob) {
+            saveAs(blob, 'trumpnote.png');
+          });
         });
       });
     });
