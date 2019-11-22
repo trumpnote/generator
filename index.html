@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trump Note</title>
+    <meta name="description" content="Trump Note Generator" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="container">
+        <img src="assets/paper.jpg" width="800" />
+        <div
+          class="note"
+          contenteditable="true"
+          onfocus="document.execCommand('selectAll',false,null)"
+        >
+          Type something here...
+        </div>
+        <img src="assets/thumb.png" width="800" />
+      </div>
+      <button>save</button>
+    </div>
+  </body>
+  <script>
+    $(function() {
+      $('img').click(function() {
+        $('.note').focus();
+      });
+
+      function downloadURI(uri, name) {
+        var link = document.createElement('a');
+        link.download = name;
+        link.href = uri;
+        link.click();
+      }
+
+      $('button').click(function() {
+        html2canvas(document.querySelector('.container')).then(function(
+          canvas
+        ) {
+          document.body.appendChild(canvas);
+          var img = canvas.toDataURL('image/png');
+          downloadURI('data:' + img, 'trump-note.png');
+        });
+      });
+    });
+  </script>
+</html>
