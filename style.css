@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'TinyHands';
+  src: url('assets/font.otf');
+}
+
+body {
+  font-family: 'TinyHands';
+}
+
+.app,
+.container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.note {
+  transform: scale(1) rotate(17deg) translate(260px, 20px) skew(-29deg, -2deg);
+  color: #11203fd9;
+  position: absolute;
+  font-size: 20px;
+  overflow: hidden;
+
+  /* forced width */
+  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
+
+  /* forced height */
+  height: 328px;
+  min-height: 328px;
+  max-height: 328px;
+}
+
+.note:focus {
+  outline: none;
+  border: 1px dashed #11203fd9;
+}
+
+button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 3;
+  font-size: 18px;
+  padding: 10px 20px;
+  font-family: 'TinyHands';
+  text-transform: uppercase;
+}
